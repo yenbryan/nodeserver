@@ -1,0 +1,59 @@
+
+footer {
+	margin-top: 60px;
+	background: #333;
+	color: #eee;
+	font-size: 11px;
+	padding: 20px;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizelegibility;
+	background-color: black;
+}
+
+ul.unstyled {
+	list-style: none;
+	padding: 0;
+}
+
+.navbar-brand {
+	padding: 13px 15px;
+}
+
+#bigCallout {
+	margin-top: 30px;
+}
+
+#symbolEntry {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.well  {
+	margin-top: 0;
+	margin-bottom: 10px;
+	color: white;
+	background-color: #606060;
+	padding: 20px;
+}
+
+/* --------------------------------------
+   Media Queries
+   -------------------------------------- */
+
+/* Portrait & landscape phone */
+@media (max-width: 480px) {
+		
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 768px) {
+	
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+
+}

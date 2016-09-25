@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stock Ticker</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap-glyphicons.css" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+
+<script src="js/bootstrap.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/controller.js"></script>
+
+</head>
+<body>
+
+	<div class="container" id="main" data-ng-app="" data-ng-controller="Controller">
+
+		<div class="row" id="bigCallout">
+			<div class="col-12">
+
+				<div class="well">
+
+						<h1>Stock Ticker</h1><br>
+						<p>Add symbols to retrieve stock data from Yahoo Finance Webservice.</p>
+						<p>Stock data are refreshed every 10 min.</p>
+						<p>This page has a responsive layout.</p>
+				</div>
+				<!-- end well -->
+				
+			</div>
+			<!-- end col-12 -->
+		</div>
+		<!-- end bigCallout -->
+
+		<div class="row" id="symbolEntry">
+			<div class="col-12">
+			<form ng-submit="addData()" class="form">
+				<input type="text" class="form-control" name="addSymbol" ng-model="addSymbol"
+				placeholder="Add stock symbols e.g. AMZN, ETFC" />
+				<input type="hidden" name="CSRFToken" value="thereisnobackendsonocsrftokengenerated" />
+				<input type="submit" class="btn btn-primary" value="Add Symbol" />
+			</form>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-3" ng-repeat="d in data | orderBy:'symbol'">
+			<div class="well">
+				<a ng-href="" align="right" style="float:right" ng-click="removeData(d.symbol)">
+				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+				<h4>{{ d.symbol }}</h4>
+				<h4>{{ d.LastTradePriceOnly }}</h4>
+				Ask: {{ d.Ask ? d.Ask : "N/A" }}<br>
+				Bid: {{ d.Bid ? d.Bid : "N/A" }}<br>
+				Change: 
+				<span ng-show="d.Change >= 0" style="color: green"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> {{ -(-d.Change) }}</span>
+				<span ng-show="d.Change < 0" style="color: red"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>{{ -d.Change }}</span>
+				<br>
+				Day's High: {{ d.DaysHigh ? d.DaysHigh : "N/A" }}<br>
+				Day's Low: {{ d.DaysLow ? d.DaysLow : "N/A" }}
+			</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- end container -->
+
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-2">
+					<h6>
+						Copyright &copy; 2016<br> <a
+							href="mailto:kingcchan@yahoo.com">King Chan</a>
+					</h6>
+				</div>
+				<!-- end col-sm-2 -->
+
+				<div class="col-sm-4">
+				</div>
+				<!-- end col-sm-4 -->
+
+				<div class="col-sm-2">
+					<h6>Navigation</h6>
+					<ul class="unstyled">
+						<li><a href="">Home</a></li>
+					</ul>
+				</div>
+				<!-- end col-sm-2 -->
+
+				<div class="col-sm-2">
+					<h6>Contact</h6>
+					<ul class="unstyled">
+						<li><a href="mailto:kingcchan@yahoo.com">Email</a></li>
+						<li><a href="http://www.linkedin.com/in/kingcchan">Linkedin</a></li>
+					</ul>
+				</div>
+				<!-- end col-sm-2 -->
+
+				<div class="col-sm-2">
+					<h6>
+						Coded in HTML5, CSS, JavaScript, jQuery, Twitter bootstrap, AngularJS by
+						<br><a href="mailto:kingcchan@yahoo.com">King Chan</a>
+					</h6>
+				</div>
+				<!-- end col-sm-2 -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end container -->
+	</footer>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+</body>
+</html>
